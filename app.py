@@ -1,3 +1,4 @@
+%%writefile app.py
 import streamlit as st
 import joblib
 import pandas as pd
@@ -27,8 +28,8 @@ if st.button("Realizar Predicción"):
     input_df = pd.DataFrame(data)
 
     # Apply OneHot Encoding
-    felder_encoded = onehot_encoder.transform(input_df[['felder']])
-    felder_encoded_df = pd.DataFrame(felder_encoded.toarray(), columns=onehot_encoder.get_feature_names_out(['felder']))
+    felder_encoded = onehot_encoder.transform(input_df[['Felder']])
+    felder_encoded_df = pd.DataFrame(felder_encoded.toarray(), columns=onehot_encoder.get_feature_names_out(['Felder']))
 
     # Apply MinMaxScaler
     examen_scaled = minmax_scaler.transform(input_df[['Examen_admisión_Universidad']])
