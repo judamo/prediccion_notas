@@ -40,7 +40,7 @@ processed_input = pd.concat([input_data.drop('Felder', axis=1), felder_encoded_d
 # This requires knowing the column order of the training data used for the model
 # For simplicity, we will assume the order based on the previous notebook steps
 # A more robust solution would save the column order during training
-expected_columns = ['Examen_admisión_Universidad_scaled','Felder_activo', 'Felder_equilibrio', 'Felder_intuitivo', 'Felder_reflexivo', 'Felder_secuencial', 'Felder_sensorial', 'Felder_verbal', 'Felder_visual'] # This should match the order from df_encoded
+expected_columns = ['Felder_activo', 'Felder_equilibrio', 'Felder_intuitivo', 'Felder_reflexivo', 'Felder_secuencial', 'Felder_sensorial', 'Felder_verbal', 'Felder_visual','Examen_admisión_Universidad_scaled'] # This should match the order from df_encoded
 
 # Reindex the processed input to match the expected columns, filling missing columns with 0
 processed_input = processed_input.reindex(columns=expected_columns, fill_value=0)
