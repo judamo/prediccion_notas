@@ -49,4 +49,4 @@ processed_input = processed_input.reindex(columns=expected_columns, fill_value=0
 # Make prediction
 if st.button('Predict'):
     prediction = model.predict(processed_input)
-    st.write(f'Predicted Course Approval: {prediction[0]:.2f}')
+    st.write(f'Predicted Course Approval: {prediction[0]}')
