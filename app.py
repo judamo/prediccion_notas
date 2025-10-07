@@ -1,3 +1,4 @@
+%%writefile app.py
 import streamlit as st
 import pandas as pd
 import joblib
@@ -31,7 +32,7 @@ felder_encoded = onehot_encoder.transform(input_data[['Felder']])
 felder_encoded_df = pd.DataFrame(felder_encoded, columns=onehot_encoder.get_feature_names_out(['Felder']))
 
 # Apply standard scaling to 'Examen_admisión_Universidad'
-input_data['Examen_admisión_Universidad'] = standard_scaler.transform(input_data[['Examen_admisión_Universidad']])
+input_data['Examen_admisión_Universidad_scaled'] = standard_scaler.transform(input_data[['Examen_admisión_Universidad']])
 
 # Concatenate the processed features
 processed_input = pd.concat([input_data.drop('Felder', axis=1), felder_encoded_df], axis=1)
@@ -40,7 +41,7 @@ processed_input = pd.concat([input_data.drop('Felder', axis=1), felder_encoded_d
 # This requires knowing the column order of the training data used for the model
 # For simplicity, we will assume the order based on the previous notebook steps
 # A more robust solution would save the column order during training
-expected_columns = ['Examen_admisión_Universidad', 'Felder_activo', 'Felder_equilibrio', 'Felder_intuitivo', 'Felder_reflexivo', 'Felder_secuencial', 'Felder_sensorial', 'Felder_verbal', 'Felder_visual'] # This should match the order from df_encoded
+expected_columns = ['Felder_activo', 'Felder_equilibrio', 'Felder_intuitivo', 'Felder_reflexivo', 'Felder_secuencial', 'Felder_sensorial', 'Felder_verbal', 'Felder_visual'] # This should match the order from df_encoded
 
 # Reindex the processed input to match the expected columns, filling missing columns with 0
 processed_input = processed_input.reindex(columns=expected_columns, fill_value=0)
